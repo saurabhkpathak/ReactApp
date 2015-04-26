@@ -3,8 +3,25 @@
     'use strict';
     var Quiz = React.createClass({
         render: function() {
-            return <div>test</div>;
+            return <div>test {this.props.data}</div>;
         }
     });
-    React.render(<Quiz data={"foo"} />, document.getElementById('app'));
+    var Book = React.createClass({
+        render: function() {
+            return <div>{this.props.title}</div>;
+        }
+    });
+    var Library = React.createClass({
+        render: function() {
+            return <div>{this.props.books.map(function(book) {
+                return <Book title={book} />;
+            })}</div>;
+        }
+    });
+    var books = [
+        'Lord of rings',
+        'Harry Potter',
+        '300 Spartans'
+    ];
+    React.render(<Library books={books} />, document.getElementById('app'));
 })();
