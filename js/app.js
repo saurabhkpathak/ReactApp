@@ -12,6 +12,9 @@
         }
     });
     var Library = React.createClass({
+        propTypes: {
+            books: React.PropTypes.array
+        },
         render: function() {
             return <div>{this.props.books.map(function(book) {
                 return <Book title={book} />;
