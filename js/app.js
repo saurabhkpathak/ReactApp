@@ -13,18 +13,32 @@
     });
     var Library = React.createClass({
         propTypes: {
-            books: React.PropTypes.array
+            data: React.PropTypes.array
         },
         render: function() {
-            return <div>{this.props.books.map(function(book) {
-                return <Book title={book} />;
+            return <div>{this.props.data.map(function(current) {
+                return <div><Book title={current.books[0]} /><Author author={current.author} /></div>;
             })}</div>;
         }
     });
-    var books = [
-        'Lord of rings',
-        'Harry Potter',
-        '300 Spartans'
+    var Author = React.createClass({
+        render: function() {
+            return <h1>{this.props.author}</h1>;
+        }
+    });
+    var data = [
+        {
+            author: 'Shakespeare',
+            books: ['Romeo and Juliet', 'Julius Ceaser']
+        },
+        {
+            author: 'J K Rowling',
+            books: ['Harry Potter']
+        },
+        {
+            author: 'Chetan Bhagat',
+            books: ['Five point someone', 'Three mistakes of my life', '2 states']
+        }
     ];
-    React.render(<Library books={books} />, document.getElementById('app'));
+    React.render(<Library data={data} />, document.getElementById('app'));
 })();
